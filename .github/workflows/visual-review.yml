@@ -1,0 +1,38 @@
+name: Ember visual review
+on:
+  workflow_dispatch:
+    inputs:
+      build_run_id:
+        description: Successful Ember Android APK run ID
+        required: true
+permissions:
+  contents: read
+  actions: read
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Ember-Launcher-APK
+          path: apk
+          run-id: ${{ inputs.build_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable emulator acceleration
+        run: sudo chmod 666 /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          arch: x86_64
+          profile: pixel_2
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: python3 scripts/visual-review.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Ember-UI-review
+          path: review/*
+          if-no-files-found: error
