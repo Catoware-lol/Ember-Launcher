@@ -16,18 +16,15 @@ import net.kdt.pojavlaunch.extra.ExtraConstants;
 import net.kdt.pojavlaunch.extra.ExtraCore;
 
 import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import net.kdt.pojavlaunch.value.OfflineIdentity;
 
 public class LocalLoginFragment extends Fragment {
     public static final String TAG = "LOCAL_LOGIN_FRAGMENT";
 
-    private final Pattern mUsernameValidationPattern;
     private EditText mUsernameEditText;
 
     public LocalLoginFragment(){
         super(R.layout.fragment_local_login);
-        mUsernameValidationPattern = Pattern.compile("^[a-zA-Z0-9_]*$");
     }
 
     @Override
@@ -53,12 +50,7 @@ public class LocalLoginFragment extends Fragment {
 
         String text = mUsernameEditText.getText().toString();
 
-        Matcher matcher = mUsernameValidationPattern.matcher(text);
-        return !(text.isEmpty()
-                || text.length() < 3
-                || text.length() > 16
-                || !matcher.find()
-                || new File(Tools.DIR_ACCOUNT_NEW + "/" + text + ".json").exists()
-        );
+        return OfflineIdentity.isValidUsername(text)
+                && !new File(Tools.DIR_ACCOUNT_NEW, text + ".json").exists();
     }
 }
