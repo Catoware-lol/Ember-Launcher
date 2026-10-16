@@ -23,7 +23,10 @@ public class MineButton extends androidx.appcompat.widget.AppCompatButton {
         boolean primary = "ember_primary".equals(getTag());
         setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
         setBackgroundResource(primary ? R.drawable.ember_primary_button : R.drawable.mine_button_background);
-        setTextColor(getResources().getColor(primary ? R.color.ember_ink : R.color.primary_text));
+        setTextColor(new android.content.res.ColorStateList(
+                new int[][]{new int[]{-android.R.attr.state_enabled}, new int[]{}},
+                new int[]{getResources().getColor(R.color.secondary_text),
+                        getResources().getColor(primary ? R.color.ember_ink : R.color.primary_text)}));
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         setAllCaps(false);
         setMinHeight(dp(48));

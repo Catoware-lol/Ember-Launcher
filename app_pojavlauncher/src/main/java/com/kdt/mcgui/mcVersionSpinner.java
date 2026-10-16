@@ -99,8 +99,8 @@ public class mcVersionSpinner extends ExtendedTextView {
         // Setup various attributes
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         setGravity(Gravity.CENTER_VERTICAL);
-        int startPadding = getContext().getResources().getDimensionPixelOffset(R.dimen._17sdp);
-        int endPadding = getContext().getResources().getDimensionPixelOffset(R.dimen._5sdp);
+        int startPadding = Math.round(8 * getResources().getDisplayMetrics().density);
+        int endPadding = startPadding;
         setPaddingRelative(startPadding, 0, endPadding, 0);
         setCompoundDrawablePadding(startPadding);
 
@@ -158,9 +158,10 @@ public class mcVersionSpinner extends ExtendedTextView {
             }
         });
 
-        mPopupWindow = new PopupWindow(mListView, MATCH_PARENT, getContext().getResources().getDimensionPixelOffset(R.dimen._184sdp));
+        mPopupWindow = new PopupWindow(mListView, Math.min(getResources().getDisplayMetrics().widthPixels - Math.round(32 * getResources().getDisplayMetrics().density), Math.round(420 * getResources().getDisplayMetrics().density)), Math.round(240 * getResources().getDisplayMetrics().density));
         mPopupWindow.setElevation(5);
-        mPopupWindow.setClippingEnabled(false);
+        mPopupWindow.setClippingEnabled(true);
+        mPopupWindow.setBackgroundDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ember_panel, null));
 
         // Block clicking outside of the popup window
         mPopupWindow.setOutsideTouchable(true);

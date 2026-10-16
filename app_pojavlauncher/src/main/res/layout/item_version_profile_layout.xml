@@ -1,20 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fr.spse.extended_view.ExtendedTextView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/selectableItemBackground"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:paddingStart="16dp"
-    app:drawableStartSize="30dp"
-    app:drawableStartIntegerScaling="true"
-
-    android:gravity="center_vertical" android:textSize="14sp" android:maxLines="2" android:paddingEnd="16dp"
-    android:drawablePadding="12dp"
-    tools:drawableStart="@drawable/ic_gamepad_pointer"
-    tools:text="FORGE - Forge-1.7.10-1664"
-    tools:ignore="RtlSymmetry">
-
-
+<fr.spse.extended_view.ExtendedTextView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:background="?attr/selectableItemBackground" android:layout_width="match_parent" android:layout_height="60dp" android:paddingStart="16dp" app:drawableStartSize="30dp" app:drawableStartIntegerScaling="true" android:gravity="center_vertical" android:textSize="14sp" android:maxLines="2" android:paddingEnd="16dp" android:drawablePadding="12dp" tools:drawableStart="@drawable/ic_gamepad_pointer" tools:text="FORGE - Forge-1.7.10-1664" tools:ignore="RtlSymmetry">
 </fr.spse.extended_view.ExtendedTextView>

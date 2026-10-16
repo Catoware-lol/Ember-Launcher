@@ -4,7 +4,11 @@ An independent Android Minecraft: Java Edition launcher based on Amethyst and Po
 
 ## Changes
 
-- Charcoal surfaces, orange accents, rounded buttons, and an Ember flame icon.
+- A custom home screen with original block-landscape artwork, a launch dock, tool cards, and separate portrait/landscape compositions.
+- Rebuilt identity, offline profile, instance library, instance editor, modpack entry, and file-picker screens.
+- Consistent typography, form fields, settings cards and headings, dialogs, sliders, buttons, and line icons.
+- Ember branding in app icons, notifications, profile fallbacks, and Android document-provider entries.
+- An emulator visual-review workflow that checks navigation and captures real Android screenshots.
 - Offline profile creation without a previous Microsoft sign-in.
 - Stable username-based offline UUIDs and proper reporting when a profile cannot be saved.
 - Local profiles can install game versions with an internet connection and use the installer, modpack, and game-folder tools.

@@ -42,7 +42,9 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
         if (group == null) return;
         for (int i = 0; i < group.getPreferenceCount(); i++) {
             Preference preference = group.getPreference(i);
-            preference.setLayoutResource(preference instanceof androidx.preference.SeekBarPreference
+            preference.setLayoutResource(preference instanceof androidx.preference.PreferenceCategory
+                    ? R.layout.ember_preference_heading
+                    : preference instanceof androidx.preference.SeekBarPreference
                     ? R.layout.ember_seekbar_preference : R.layout.ember_preference);
             if (preference instanceof androidx.preference.PreferenceGroup)
                 stylePreferences((androidx.preference.PreferenceGroup) preference);

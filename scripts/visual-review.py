@@ -68,6 +68,7 @@ try:
             break
     tap('setting_button')
     tap('mc_version_spinner')
+    screenshot('06-instance-picker')
     tap('Create new profile')
     screenshot('06-instance-library')
     tap('vanilla_profile')
@@ -78,6 +79,11 @@ try:
     time.sleep(3)
     find('play_button')
     screenshot('08-home-landscape')
+    adb('shell', 'settings', 'put', 'system', 'user_rotation', '0')
+    adb('shell', 'wm', 'size', '840x1680')
+    time.sleep(3)
+    find('play_button')
+    screenshot('09-home-small-phone')
     log = adb('logcat', '-d', '-s', 'AndroidRuntime:E').decode(errors='replace')
     assert 'FATAL EXCEPTION' not in log, log
     print('UI smoke checks passed; screenshots saved in review/')

@@ -1,1 +1,9 @@
-<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="#33FFFFFF"><item android:drawable="@drawable/ember_primary"/></ripple>
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/ember_secondary"/>
+    <item>
+        <ripple android:color="#33FFFFFF">
+            <item android:drawable="@drawable/ember_primary"/>
+        </ripple>
+    </item>
+</selector>

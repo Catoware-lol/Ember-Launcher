@@ -1,62 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_app"
-    android:paddingHorizontal="@dimen/fragment_padding_medium">
-
-    <com.kdt.pickafile.FileListView
-        android:id="@+id/file_selector"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@id/file_selector_create_folder"
-        app:layout_constraintTop_toBottomOf="@+id/file_selector_current_path" />
-
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/file_selector_select_folder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_16sdp"
-        android:layout_marginStart="@dimen/padding_medium"
-        android:text="@string/folder_fragment_select"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/file_selector_create_folder"
-         />
-
-    <com.kdt.mcgui.MineButton
-        android:id="@+id/file_selector_create_folder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_16sdp"
-        android:layout_marginEnd="@dimen/padding_medium"
-
-        android:text="@string/folder_fragment_create"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/file_selector_select_folder"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-
-        app:layout_constraintStart_toStartOf="parent"
-         />
-
-    <TextView
-        android:id="@+id/file_selector_current_path"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="."
-        android:textColor="@color/primary_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/background_app" android:padding="16dp">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ember_files" android:textSize="28sp" android:fontFamily="sans-serif-medium" android:layout_marginBottom="16dp"/>
+    <TextView android:id="@+id/file_selector_current_path" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:maxLines="2" android:ellipsize="middle" android:gravity="center_vertical" android:padding="12dp" android:background="@drawable/ember_panel" android:textSize="12sp" android:textColor="@color/secondary_text"/>
+    <com.kdt.pickafile.FileListView android:id="@+id/file_selector" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:layout_marginTop="12dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal">
+        <com.kdt.mcgui.MineButton android:id="@+id/file_selector_create_folder" android:layout_width="0dp" android:layout_height="54dp" android:layout_weight="1" android:text="@string/folder_fragment_create" android:layout_marginEnd="8dp"/>
+        <com.kdt.mcgui.MineButton android:id="@+id/file_selector_select_folder" android:tag="ember_primary" android:layout_width="0dp" android:layout_height="54dp" android:layout_weight="1" android:text="@string/folder_fragment_select"/>
+    </LinearLayout>
+</LinearLayout>
