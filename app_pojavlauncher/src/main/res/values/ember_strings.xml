@@ -40,4 +40,5 @@
     <string name="ember_ready">Ready to play</string>
     <string name="ember_your_instances">Your instances</string>
     <string name="ember_tools">Tools</string>
+    <string name="ember_device_short">Device test</string>
 </resources>

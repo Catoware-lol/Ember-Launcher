@@ -135,7 +135,7 @@ public final class DeviceDiagnostics {
             } while (System.nanoTime() < end);
             double copySeconds = (System.nanoTime() - start) / 1e9;
             return String.format(Locale.US,
-                    "Benchmark complete\nCPU: %.1f million integer operations/s (one thread)\nMemory copy: %.0f MiB/s (4 MiB blocks)\n\nA short synthetic test, not Minecraft FPS. Results vary with temperature and background activity. GPU performance is not measured.",
+                    "Benchmark complete\nCPU: %.1f million integer-mix iterations/s (one thread)\nMemory copy: %.0f MiB/s (4 MiB blocks)\n\nA short synthetic test, not Minecraft FPS. Results vary with temperature and background activity. GPU performance is not measured.",
                     operations / seconds / 1e6, copies * 4 / copySeconds);
         } catch (OutOfMemoryError e) {
             return "Benchmark stopped: not enough memory for the 8 MiB copy test.";
