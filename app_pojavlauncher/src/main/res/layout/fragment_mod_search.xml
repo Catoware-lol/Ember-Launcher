@@ -33,7 +33,7 @@
             android:id="@+id/search_mod_edittext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_line"
+            android:background="@drawable/background_line" android:minHeight="50dp"
             android:textSize="@dimen/_13ssp"
             android:translationZ="2dp"
 

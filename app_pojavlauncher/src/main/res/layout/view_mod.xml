@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_line"
+    android:background="@drawable/background_line" android:minHeight="50dp"
     android:paddingHorizontal="@dimen/_2sdp"
     android:paddingVertical="@dimen/_2sdp"
     android:layout_marginVertical="@dimen/padding_medium"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        tools:src="@mipmap/ic_launcher_foreground"
+        tools:src="@drawable/ember_mark"
         />
 
     <ImageView
@@ -32,7 +32,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@mipmap/ic_launcher_foreground" />
+        tools:src="@drawable/ember_mark" />
 
     <TextView
         android:id="@+id/mod_title_textview"

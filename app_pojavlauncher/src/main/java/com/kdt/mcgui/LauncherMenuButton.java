@@ -30,20 +30,20 @@ public class LauncherMenuButton extends ExtendedButton {
     }
 
 
-    /** Set style stuff */
-    private void setSettings(){
-        Resources resources = getContext().getResources();
-
-        int padding = resources.getDimensionPixelSize(R.dimen._22sdp);
-        setCompoundDrawablePadding(padding);
-        setPaddingRelative(padding, 0, 0, 0);
+    private void setSettings() {
+        float density = getResources().getDisplayMetrics().density;
+        int padding = Math.round(14 * density);
+        setBackgroundResource(R.drawable.ember_icon_button);
+        setTextColor(getResources().getColor(R.color.primary_text));
+        setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+        setAllCaps(false);
+        setCompoundDrawablePadding(Math.round(10 * density));
+        setPaddingRelative(padding, 0, padding, 0);
         setGravity(Gravity.CENTER_VERTICAL);
-
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen._12ssp));
-
-        // Set drawable size
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        setMinWidth(0);
         int[] sizes = getExtendedViewData().getSizeCompounds();
-        sizes[0] = resources.getDimensionPixelSize(R.dimen._30sdp);
+        sizes[0] = Math.round(22 * density);
         getExtendedViewData().setSizeCompounds(sizes);
         postProcessDrawables();
     }

@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="?attr/selectableItemBackground"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_52sdp"
-    android:paddingStart="@dimen/_17sdp"
-    app:drawableStartSize="@dimen/_36sdp"
+    android:layout_height="60dp"
+    android:paddingStart="16dp"
+    app:drawableStartSize="30dp"
     app:drawableStartIntegerScaling="true"
 
-    android:gravity="center_vertical"
-    android:drawablePadding="@dimen/_19sdp"
+    android:gravity="center_vertical" android:textSize="14sp" android:maxLines="2" android:paddingEnd="16dp"
+    android:drawablePadding="12dp"
     tools:drawableStart="@drawable/ic_gamepad_pointer"
     tools:text="FORGE - Forge-1.7.10-1664"
     tools:ignore="RtlSymmetry">

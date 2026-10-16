@@ -1,53 +1,11 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/background_app">
+<LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:gravity="center_vertical" android:paddingHorizontal="16dp">
+<ImageView android:layout_width="36dp" android:layout_height="42dp" android:src="@drawable/ember_mark" android:contentDescription="@null"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="EMBER" android:textSize="17sp" android:fontFamily="sans-serif-black" android:letterSpacing="0.12" android:layout_marginStart="6dp"/>
 
-    <com.kdt.mcgui.mcAccountSpinner
-        android:id="@+id/account_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_42sdp"
-
-        android:dropDownWidth="wrap_content"
-        android:dropDownVerticalOffset="@dimen/_42sdp"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <ImageButton
-        android:id="@+id/setting_button"
-        android:layout_width="@dimen/_52sdp"
-        android:layout_height="@dimen/_42sdp"
-        android:background="?attr/selectableItemBackground"
-        android:src="@drawable/ic_menu_settings"
-        android:scaleType="fitCenter"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-    <!-- Holding most of the dynamic content -->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container_fragment"
-
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/progress_layout"
-        app:layout_constraintTop_toBottomOf="@+id/account_spinner" />
-
-
-    <com.kdt.mcgui.ProgressLayout
-        android:id="@+id/progress_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+<com.kdt.mcgui.mcAccountSpinner android:id="@+id/account_spinner" android:layout_width="0dp" android:layout_weight="1" android:layout_marginStart="16dp" android:layout_height="48dp" android:dropDownWidth="260dp" android:dropDownVerticalOffset="48dp" android:popupBackground="@drawable/ember_panel"/>
+<ImageButton android:id="@+id/setting_button" android:layout_width="48dp" android:layout_height="48dp" android:layout_marginStart="8dp" android:padding="13dp" android:src="@drawable/ic_menu_settings" android:background="@drawable/ember_icon_button" android:contentDescription="@string/ember_settings"/>
+</LinearLayout>
+<androidx.fragment.app.FragmentContainerView android:id="@+id/container_fragment" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+<com.kdt.mcgui.ProgressLayout android:id="@+id/progress_layout" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>

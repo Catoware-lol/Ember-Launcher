@@ -19,10 +19,15 @@ public class MineButton extends androidx.appcompat.widget.AppCompatButton {
 		init();
 	}
 
-	public void init() {
-		setTypeface(ResourcesCompat.getFont(getContext(), R.font.noto_sans_bold));
-		setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.mine_button_background, null));
-		setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen._13ssp));
-	}
-
+    public void init() {
+        boolean primary = "ember_primary".equals(getTag());
+        setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+        setBackgroundResource(primary ? R.drawable.ember_primary_button : R.drawable.mine_button_background);
+        setTextColor(getResources().getColor(primary ? R.color.ember_ink : R.color.primary_text));
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        setAllCaps(false);
+        setMinHeight(dp(48));
+        setPadding(dp(16), dp(10), dp(16), dp(10));
+    }
+    private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
 }

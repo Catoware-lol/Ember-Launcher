@@ -25,12 +25,28 @@ public class LauncherPreferenceFragment extends PreferenceFragmentCompat impleme
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         view.setBackgroundColor(getResources().getColor(R.color.background_app));
         super.onViewCreated(view, savedInstanceState);
+        int padding = Math.round(16 * getResources().getDisplayMetrics().density);
+        getListView().setPadding(padding, padding / 2, padding, padding);
+        getListView().setClipToPadding(false);
+        setDivider(null);
+        stylePreferences(getPreferenceScreen());
     }
 
     @Override
     public void onCreatePreferences(Bundle b, String str) {
         addPreferencesFromResource(R.xml.pref_main);
         setupNotificationRequestPreference();
+    }
+
+    private void stylePreferences(androidx.preference.PreferenceGroup group) {
+        if (group == null) return;
+        for (int i = 0; i < group.getPreferenceCount(); i++) {
+            Preference preference = group.getPreference(i);
+            preference.setLayoutResource(preference instanceof androidx.preference.SeekBarPreference
+                    ? R.layout.ember_seekbar_preference : R.layout.ember_preference);
+            if (preference instanceof androidx.preference.PreferenceGroup)
+                stylePreferences((androidx.preference.PreferenceGroup) preference);
+        }
     }
 
     private void setupNotificationRequestPreference() {

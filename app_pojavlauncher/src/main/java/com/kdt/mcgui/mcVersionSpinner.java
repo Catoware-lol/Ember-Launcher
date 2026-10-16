@@ -97,7 +97,7 @@ public class mcVersionSpinner extends ExtendedTextView {
     /** Initialize various behaviors */
     private void init(){
         // Setup various attributes
-        setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimensionPixelSize(R.dimen._12ssp));
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         setGravity(Gravity.CENTER_VERTICAL);
         int startPadding = getContext().getResources().getDimensionPixelOffset(R.dimen._17sdp);
         int endPadding = getContext().getResources().getDimensionPixelOffset(R.dimen._5sdp);
