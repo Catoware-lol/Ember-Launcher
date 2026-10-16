@@ -1,3 +1,13 @@
+# Ember Launcher
+
+A custom Android launcher with a charcoal-and-orange theme and offline profiles that work without Microsoft sign-in. Based on Amethyst and PojavLauncher.
+
+See [Ember setup, builds, and offline play](EMBER.md). Get the APK from the latest successful [Ember Android APK run](https://github.com/Catoware-lol/Ember-Launcher/actions/workflows/android.yml).
+
+The documentation below is retained from upstream for credits and technical reference.
+
+---
+
 <h1 align="center">Angel Aura Amethyst</h1>
 
 <img src="https://github.com/AngelAuraMC/Amethyst-Android/blob/v3_openjdk/app_pojavlauncher/src/main/assets/amethyst.png" align="left" width="130" height="130" alt="Amethyst logo">
