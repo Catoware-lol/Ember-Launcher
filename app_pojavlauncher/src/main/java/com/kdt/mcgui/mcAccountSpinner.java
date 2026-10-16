@@ -136,10 +136,14 @@ public class mcAccountSpinner extends AppCompatSpinner implements AdapterView.On
         if(value[1].isEmpty()){ // Test mode
             MinecraftAccount account = new MinecraftAccount();
             account.username = value[0];
+            account.profileId = java.util.UUID.nameUUIDFromBytes(
+                    ("OfflinePlayer:" + account.username).getBytes(java.nio.charset.StandardCharsets.UTF_8))
+                    .toString().replace("-", "");
             try {
                 account.save();
             }catch (IOException e){
-                Log.e("McAccountSpinner", "Failed to save the account : " + e);
+                Tools.showError(getContext(), e);
+                return false;
             }
 
             mDoneListener.onLoginDone(account);

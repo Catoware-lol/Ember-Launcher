@@ -1841,6 +1841,14 @@ public final class Tools {
         MinecraftAccount currentProfile = PojavProfile.getCurrentProfileContent(ctx, null);
         return currentProfile == null || currentProfile.isLocal();
     }
+    /** Local profiles can use launcher tools without an online account. */
+    public static boolean hasPlayableProfile(){
+        for (MinecraftAccount account : getAllProfiles()) {
+            if (!account.isDemo()) return true;
+        }
+        return false;
+    }
+
     public static boolean hasOnlineProfile(){
         for (MinecraftAccount accountToCheck : getAllProfiles()) {
             if (!accountToCheck.isLocal() && !accountToCheck.isDemo()) {
