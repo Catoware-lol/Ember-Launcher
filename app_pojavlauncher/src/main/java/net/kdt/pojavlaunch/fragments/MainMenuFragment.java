@@ -41,6 +41,7 @@ public class MainMenuFragment extends Fragment {
     public static final String TAG = "MainMenuFragment";
 
     private mcVersionSpinner mVersionSpinner;
+    private net.kdt.pojavlaunch.profiles.ProfileAdapter mInstanceAdapter;
 
     public MainMenuFragment(){
         super(R.layout.fragment_launcher);
@@ -58,6 +59,20 @@ public class MainMenuFragment extends Fragment {
         ImageButton mEditProfileButton = view.findViewById(R.id.edit_profile_button);
         Button mPlayButton = view.findViewById(R.id.play_button);
         mVersionSpinner = view.findViewById(R.id.mc_version_spinner);
+        mInstanceAdapter = new net.kdt.pojavlaunch.profiles.ProfileAdapter(null);
+        android.widget.ListView instances = view.findViewById(R.id.ember_instance_list);
+        instances.setAdapter(mInstanceAdapter);
+        instances.setOnItemClickListener((parent, row, position, id) -> {
+            String key = (String) mInstanceAdapter.getItem(position);
+            int index = mVersionSpinner.getProfileAdapter().resolveProfileIndex(key);
+            if (index >= 0) {
+                mVersionSpinner.setProfileSelection(index);
+                mInstanceAdapter.notifyDataSetChanged();
+            }
+        });
+        view.findViewById(R.id.ember_add_instance).setOnClickListener(v ->
+                Tools.swapFragment(requireActivity(), ProfileTypeSelectFragment.class,
+                        ProfileTypeSelectFragment.TAG, null));
 
         mNewsButton.setOnClickListener(v -> Tools.openURL(requireActivity(), "https://github.com/Catoware-lol/Ember-Launcher/blob/v3_openjdk/EMBER.md"));
         mDiscordButton.setOnClickListener(v -> Tools.openURL(requireActivity(), "https://github.com/Catoware-lol/Ember-Launcher"));
@@ -116,6 +131,7 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mVersionSpinner.reloadProfiles();
+        if (mInstanceAdapter != null) mInstanceAdapter.reloadProfiles();
     }
 
     private void runInstallerWithConfirmation(boolean isCustomArgs) {

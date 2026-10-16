@@ -2,13 +2,13 @@
 <resources>
     <color name="control_button_color">#4CC4C4C4</color>
     <color name="control_button_pressed_color">#4D000000</color>
-    <color name="minebutton_color">#FF9B54</color>
-    <color name="background_app">#101419</color>
-    <color name="background_overlay">#303740</color>
-    <color name="divider">#303740</color>
-    <color name="background_status_bar">#101419</color>
-    <color name="background_bottom_bar">#191E24</color>
-    <color name="primary_text">#F5F1E8</color>
-    <color name="secondary_text">#A6AFBB</color>
-    <color name="ember_ink">#24170D</color>
+    <color name="minebutton_color">#D9AD6C</color>
+    <color name="background_app">#18191B</color>
+    <color name="background_overlay">#333538</color>
+    <color name="divider">#333538</color>
+    <color name="background_status_bar">#18191B</color>
+    <color name="background_bottom_bar">#202124</color>
+    <color name="primary_text">#ECEDEE</color>
+    <color name="secondary_text">#A3A6AB</color>
+    <color name="ember_ink">#191919</color>
 </resources>

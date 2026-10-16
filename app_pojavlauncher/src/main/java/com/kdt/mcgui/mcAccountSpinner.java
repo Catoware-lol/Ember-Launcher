@@ -189,7 +189,8 @@ public class mcAccountSpinner extends AppCompatSpinner implements AdapterView.On
         if(mLoginBarWidth == -1) mLoginBarWidth = getWidth(); // Initial draw
 
         float bottom = getHeight() - mLoginBarPaint.getStrokeWidth()/2;
-        canvas.drawLine(0, bottom, mLoginBarWidth, bottom, mLoginBarPaint);
+        if (mLoginStep > 0 && mLoginStep < MAX_LOGIN_STEP)
+            canvas.drawLine(0, bottom, mLoginBarWidth, bottom, mLoginBarPaint);
     }
 
     public void removeCurrentAccount(){

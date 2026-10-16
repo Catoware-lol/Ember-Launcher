@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp" android:background="@drawable/ember_panel" android:layout_marginBottom="8dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp" android:background="@drawable/ember_icon_button" android:layout_marginBottom="8dp">
     <TextView android:id="@android:id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="15sp" android:fontFamily="sans-serif-medium"/>
     <TextView android:id="@android:id/summary" android:layout_width="match_parent" android:layout_height="wrap_content" android:textSize="12sp" android:textColor="@color/secondary_text" android:layout_marginTop="6dp"/>
     <LinearLayout android:layout_width="match_parent" android:layout_height="56dp" android:gravity="center_vertical">
