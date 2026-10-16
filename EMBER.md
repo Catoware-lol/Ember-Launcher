@@ -4,9 +4,12 @@ An independent Android Minecraft: Java Edition launcher based on Amethyst and Po
 
 ## Changes
 
-- A compact, selectable instance list with a persistent Play bar and utility actions; landscape uses a narrow tools sidebar.
+- A phone layout with a selected-instance launch panel, full-width Play button, a list that fits the instance count, and paired utility controls. The page scrolls on smaller screens and in landscape.
 - Rebuilt identity, offline profile, instance library, instance editor, modpack entry, and file-picker screens.
-- Restrained neutral styling, small corner radii, compact form headings, simple settings rows, and matching line icons.
+- Neutral surfaces, softly rounded panels, readable form headings, simple settings rows, and matching line icons.
+- **Auto Configure RAM** in Settings → Java: opt in to a fresh RAM budget before every launch. Total RAM, available RAM, Android’s low-memory threshold, and 32-bit limits inform the budget. Manual settings are preserved when switched off.
+- Java starts with at most 128 MB of heap and grows up to the configured limit. Automatic allocation caps at 2 GB and leaves Android/native-renderer headroom; heavy modpacks may need manual tuning. No background apps are killed.
+- **Device & benchmark** reports phone/Android/ABI/CPU/RAM and the real GLES driver. Its short CPU and memory-copy tests report measured throughput, not a fabricated score or Minecraft FPS. GPU performance is not measured.
 - Ember branding in app icons, notifications, profile fallbacks, and Android document-provider entries.
 - An emulator visual-review workflow that checks navigation and captures real Android screenshots.
 - Offline profile creation without a previous Microsoft sign-in.

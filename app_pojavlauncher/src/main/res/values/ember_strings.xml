@@ -31,4 +31,13 @@
     <string name="ember_modpack_body">Browse available packs or import a ZIP or mrpack file.</string>
     <string name="ember_browse_modpacks">Browse modpacks</string>
     <string name="ember_import_modpack">Import from a file</string>
+    <string name="ember_auto_ram">Auto Configure RAM</string>
+    <string name="ember_auto_ram_summary">Checks total and available phone RAM before launch. Reserves room for Android and the renderer. Turn off to set RAM manually.</string>
+    <string name="ember_ram_estimate">Current recommendation: %1$d MB. Large modpacks may need manual tuning.</string>
+    <string name="ember_device">Device &amp; benchmark</string>
+    <string name="ember_benchmark">Run benchmark</string>
+    <string name="ember_benchmark_running">Testing CPU and memory…</string>
+    <string name="ember_ready">Ready to play</string>
+    <string name="ember_your_instances">Your instances</string>
+    <string name="ember_tools">Tools</string>
 </resources>

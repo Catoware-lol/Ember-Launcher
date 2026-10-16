@@ -37,7 +37,7 @@ public class LauncherPreferenceJavaFragment extends LauncherPreferenceFragment {
 
     @Override
     public void onCreatePreferences(Bundle b, String str) {
-        int ramAllocation = LauncherPreferences.PREF_RAM_ALLOCATION;
+        int ramAllocation = LauncherPreferences.DEFAULT_PREF.getInt("allocation", LauncherPreferences.PREF_RAM_ALLOCATION);
         // Triggers a write for some reason
         addPreferencesFromResource(R.xml.pref_java);
 
@@ -53,6 +53,18 @@ public class LauncherPreferenceJavaFragment extends LauncherPreferenceFragment {
         memorySeekbar.setMaxKeepIncrement(maxRAM);
         memorySeekbar.setValue(ramAllocation);
         memorySeekbar.setSuffix(" MB");
+        SwitchPreference autoRam = requirePreference("auto_configure_ram", SwitchPreference.class);
+        memorySeekbar.setEnabled(!autoRam.isChecked());
+        updateAutoSummary(autoRam);
+        autoRam.setOnPreferenceChangeListener((preference, value) -> {
+            boolean enabled = (Boolean) value;
+            memorySeekbar.setEnabled(!enabled);
+            LauncherPreferences.PREF_RAM_ALLOCATION = enabled
+                    ? net.kdt.pojavlaunch.utils.DeviceMemory.recommendation(requireContext())
+                    : memorySeekbar.getValue();
+            updateAutoSummary(autoRam);
+            return true;
+        });
 
         EditTextPreference editJVMArgs = findPreference("javaArgs");
         if (editJVMArgs != null) {
@@ -63,6 +75,12 @@ public class LauncherPreferenceJavaFragment extends LauncherPreferenceFragment {
             openMultiRTDialog();
             return true;
         });
+    }
+
+    private void updateAutoSummary(SwitchPreference preference) {
+        preference.setSummary(getString(R.string.ember_auto_ram_summary) + "\n"
+                + getString(R.string.ember_ram_estimate,
+                net.kdt.pojavlaunch.utils.DeviceMemory.recommendation(requireContext())));
     }
 
     private void openMultiRTDialog() {

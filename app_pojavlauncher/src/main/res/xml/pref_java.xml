@@ -19,6 +19,12 @@
             android:summary="@string/mcl_setting_subtitle_javaargs"
             android:title="@string/mcl_setting_title_javaargs" />
 
+        <SwitchPreference
+            android:key="auto_configure_ram"
+            android:defaultValue="false"
+            android:title="@string/ember_auto_ram"
+            android:summary="@string/ember_auto_ram_summary" />
+
         <net.kdt.pojavlaunch.prefs.CustomSeekBarPreference
             android:key="allocation"
 

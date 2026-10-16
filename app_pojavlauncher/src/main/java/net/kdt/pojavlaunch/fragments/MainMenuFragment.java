@@ -75,7 +75,7 @@ public class MainMenuFragment extends Fragment {
                         ProfileTypeSelectFragment.TAG, null));
 
         mNewsButton.setOnClickListener(v -> Tools.openURL(requireActivity(), "https://github.com/Catoware-lol/Ember-Launcher/blob/v3_openjdk/EMBER.md"));
-        mDiscordButton.setOnClickListener(v -> Tools.openURL(requireActivity(), "https://github.com/Catoware-lol/Ember-Launcher"));
+        mDiscordButton.setOnClickListener(v -> net.kdt.pojavlaunch.utils.DeviceDiagnostics.show(requireActivity()));
         mCustomControlButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), CustomControlsActivity.class)));
         if (hasPlayableProfile()) {
             mInstallJarButton.setOnClickListener(v -> runInstallerWithConfirmation(false));
@@ -131,7 +131,20 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mVersionSpinner.reloadProfiles();
-        if (mInstanceAdapter != null) mInstanceAdapter.reloadProfiles();
+        if (mInstanceAdapter != null) {
+            mInstanceAdapter.reloadProfiles();
+            View list = requireView().findViewById(R.id.ember_instance_list);
+            android.view.ViewGroup.LayoutParams params = list.getLayoutParams();
+            params.height = (int) ((Math.min(3, Math.max(1, mInstanceAdapter.getCount())) * 64 + 8)
+                    * getResources().getDisplayMetrics().density);
+            list.setLayoutParams(params);
+        }
+        net.kdt.pojavlaunch.utils.DeviceMemory.refresh(requireContext());
+        android.widget.TextView memory = requireView().findViewById(R.id.ember_memory_status);
+        boolean auto = LauncherPreferences.DEFAULT_PREF.getBoolean("auto_configure_ram", false);
+        memory.setText((auto ? "Auto RAM · " : "Manual RAM · ")
+                + LauncherPreferences.PREF_RAM_ALLOCATION + " MB limit · "
+                + Tools.getFreeDeviceMemory(requireContext()) + " MB available");
     }
 
     private void runInstallerWithConfirmation(boolean isCustomArgs) {

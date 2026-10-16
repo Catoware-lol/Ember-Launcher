@@ -19,6 +19,8 @@ jobs:
           java-version: '21'
       - name: Test offline identities
         run: bash scripts/test-offline-identity.sh
+      - name: Test memory budgets
+        run: bash scripts/test-memory-budget.sh
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools

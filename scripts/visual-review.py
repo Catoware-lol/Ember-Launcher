@@ -65,9 +65,25 @@ try:
         if 'Java' in node.get('text', '') and node.get('resource-id', '').endswith('/title'):
             tap(node.get('text'))
             screenshot('05-java-settings')
+            tap('Auto Configure RAM')
+            assert find('seekbar').get('enabled') == 'false', 'Manual RAM must disable in auto mode'
+            screenshot('05-auto-ram-enabled')
+            tap('Auto Configure RAM')
+            assert find('seekbar').get('enabled') == 'true', 'Manual RAM must restore'
             back()
             break
     tap('setting_button')
+    # Tools are reachable by scrolling on smaller screens.
+    adb('shell', 'input', 'swipe', '500', '1500', '500', '500', '400')
+    tap('discord_button')
+    time.sleep(3)
+    screenshot('05-device-report')
+    tap('Run benchmark')
+    time.sleep(4)
+    assert any('Benchmark complete' in n.get('text', '') for n in tree().iter('node')), 'Benchmark did not complete'
+    screenshot('05-benchmark')
+    back()
+    adb('shell', 'input', 'swipe', '500', '500', '500', '1500', '400')
     tap('mc_version_spinner')
     screenshot('06-instance-picker')
     back()
