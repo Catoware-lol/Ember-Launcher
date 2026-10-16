@@ -67,7 +67,8 @@ try:
             back()
             break
     tap('setting_button')
-    tap('edit_profile_button')
+    tap('mc_version_spinner')
+    tap('Create new profile')
     screenshot('06-instance-library')
     tap('vanilla_profile')
     screenshot('07-instance-editor')
