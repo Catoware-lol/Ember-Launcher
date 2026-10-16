@@ -12,7 +12,7 @@ An independent Android Minecraft: Java Edition launcher based on Amethyst and Po
 
 ## Build and download
 
-Open this repository's Actions tab and run **Ember Android APK**. The workflow installs Java 21, Android SDK 37 and NDK 27, retrieves the upstream Java 8 runtime, and builds a debug APK without private release-signing credentials. Download **Ember-Launcher-APK** from the completed run. The artifact includes a SHA-256 checksum.
+Open this repository's Actions tab and run **Ember Android APK**. The workflow installs Java 21, Android SDK 36 and NDK 27, retrieves the upstream Java 8 runtime, and builds a debug APK without private release-signing credentials. Download **Ember-Launcher-APK** from the completed run. The artifact includes a SHA-256 checksum.
 
 The debug APK uses the inherited development key. It is suitable for development; a private signing key is needed before a production release. A CurseForge API key is optional and is not bundled.
 
