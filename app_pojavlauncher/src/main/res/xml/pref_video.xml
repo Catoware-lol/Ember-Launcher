@@ -10,6 +10,8 @@
         <SwitchPreference android:key="fps_details" android:defaultValue="false"
             android:dependency="fps_counter" android:title="@string/ember_fps_details"
             android:summary="@string/ember_fps_details_summary" />
+        <Preference android:key="fps_preview" android:persistent="false"
+            android:dependency="fps_counter" android:title="@string/ember_overlay_preview" />
         <Preference
             android:title="@string/mcl_setting_title_renderer_settings"
             android:summary="@string/mcl_setting_title_renderer_subtitle"

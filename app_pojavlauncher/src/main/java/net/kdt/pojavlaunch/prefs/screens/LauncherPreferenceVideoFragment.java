@@ -17,9 +17,14 @@ import net.kdt.pojavlaunch.prefs.LauncherPreferences;
  * Fragment for any settings video related
  */
 public class LauncherPreferenceVideoFragment extends LauncherPreferenceFragment {
+    private androidx.appcompat.app.AlertDialog overlayPreviewDialog;
     @Override
     public void onCreatePreferences(Bundle b, String str) {
         addPreferencesFromResource(R.xml.pref_video);
+        requirePreference("fps_preview").setOnPreferenceClickListener(preference -> {
+            showOverlayPreview();
+            return true;
+        });
         int resolution = (int) (LauncherPreferences.PREF_SCALE_FACTOR * 100);
 
         //Disable notch checking behavior on android 8.1 and below.
@@ -52,6 +57,32 @@ public class LauncherPreferenceVideoFragment extends LauncherPreferenceFragment 
     public void onSharedPreferenceChanged(SharedPreferences p, String s) {
         super.onSharedPreferenceChanged(p, s);
         computeVisibility();
+    }
+
+    private void showOverlayPreview() {
+        android.widget.LinearLayout content = new android.widget.LinearLayout(requireContext());
+        content.setOrientation(android.widget.LinearLayout.VERTICAL);
+        android.widget.FrameLayout canvas = new android.widget.FrameLayout(requireContext());
+        content.addView(canvas, new android.widget.LinearLayout.LayoutParams(-1,
+                Math.round(170 * getResources().getDisplayMetrics().density)));
+        android.widget.TextView note = new android.widget.TextView(requireContext());
+        int pad = Math.round(16 * getResources().getDisplayMetrics().density);
+        note.setPadding(pad, 0, pad, pad);
+        note.setText(R.string.ember_overlay_preview_note);
+        content.addView(note);
+        net.kdt.pojavlaunch.utils.PerformanceOverlay overlay =
+                new net.kdt.pojavlaunch.utils.PerformanceOverlay(canvas);
+        overlayPreviewDialog = new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle(R.string.ember_overlay_preview).setView(content)
+                .setPositiveButton(android.R.string.ok, null).create();
+        overlayPreviewDialog.setOnDismissListener(dialog -> overlay.stop());
+        overlayPreviewDialog.show();
+        overlay.start();
+    }
+
+    @Override public void onStop() {
+        if (overlayPreviewDialog != null) overlayPreviewDialog.dismiss();
+        super.onStop();
     }
 
     private void computeVisibility(){

@@ -51,4 +51,6 @@
     <string name="ember_editor_more">More</string>
     <string name="ember_editor_add">Add</string>
     <string name="ember_editor_show">Show tools</string>
+    <string name="ember_overlay_preview">Preview performance overlay</string>
+    <string name="ember_overlay_preview_note">Preview: FPS appears during gameplay on supported render paths. PROC is this process’s RAM; FREE is available phone RAM.</string>
 </resources>

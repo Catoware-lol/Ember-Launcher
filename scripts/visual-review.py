@@ -77,6 +77,11 @@ try:
     tap('FPS counter')
     tap('Detailed performance overlay')
     screenshot('05-video-fps-on')
+    tap('Preview performance overlay')
+    time.sleep(3)
+    assert any('PROC ' in n.get('text', '') for n in tree().iter('node')), 'Native overlay preview must update'
+    screenshot('05-performance-overlay')
+    tap('OK')
     assert sum(n.get('checked') == 'true' for n in tree().iter('node')) >= 2, 'FPS switches must enable'
     back()
     tap('Video and renderer')

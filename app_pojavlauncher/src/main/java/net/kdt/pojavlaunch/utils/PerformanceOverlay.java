@@ -26,7 +26,7 @@ public final class PerformanceOverlay {
             String value = fps > 0 ? String.format(Locale.US, "FPS  %5.1f", fps) : "FPS     —";
             if (LauncherPreferences.DEFAULT_PREF.getBoolean("fps_details", false)) {
                 value += fps > 0 ? String.format(Locale.US, "\nAVG  %5.2f ms", 1000 / fps) : "\nAVG      — ms";
-                value += "\nGAME " + Debug.getPss() / 1024 + " MiB PSS";
+                value += "\nPROC " + Debug.getPss() / 1024 + " MiB PSS";
                 value += "\nFREE " + DeviceMemory.snapshot(text.getContext()).availMem / 1048576 + " MiB";
             }
             text.setText(value);
