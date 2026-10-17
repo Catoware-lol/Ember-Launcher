@@ -19,7 +19,7 @@ def tree():
 def find(name, attempts=8):
     for _ in range(attempts):
         for node in tree().iter('node'):
-            if node.get('resource-id', '').endswith(':id/' + name) or node.get('text') == name:
+            if node.get('resource-id', '').endswith(':id/' + name) or node.get('text', '').casefold() == name.casefold():
                 return node
         time.sleep(1)
     raise AssertionError('Missing UI control: ' + name)
