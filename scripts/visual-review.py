@@ -109,6 +109,10 @@ try:
     back()
     back()
     tap('custom_control_button')
+    time.sleep(2)
+    screenshot('08-controls-entry')
+    if any('got it' == n.get('text', '').casefold() for n in tree().iter('node')):
+        tap('Got it')
     find('editor_add')
     screenshot('08-controls-editor')
     tap('editor_add')
@@ -143,5 +147,8 @@ try:
     log = adb('logcat', '-d', '-s', 'AndroidRuntime:E').decode(errors='replace')
     assert 'FATAL EXCEPTION' not in log, log
     print('UI smoke checks passed; screenshots saved in review/')
+except Exception:
+    screenshot('99-failure')
+    raise
 finally:
     (out / 'logcat.txt').write_bytes(adb('logcat', '-d'))
