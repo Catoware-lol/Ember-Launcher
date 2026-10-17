@@ -1,4 +1,5 @@
 #include <jni.h>
+#include "frame_counter.h"
 #include <assert.h>
 #include <dlfcn.h>
 
@@ -227,6 +228,7 @@ EXTERNAL_API void pojavSetWindowHint(int hint, int value) {
 
 EXTERNAL_API void pojavSwapBuffers() {
     br_swap_buffers();
+    ember_record_frame();
 }
 
 
@@ -259,3 +261,12 @@ EXTERNAL_API void pojavSwapInterval(int interval) {
     br_swap_interval(interval);
 }
 
+
+JNIEXPORT void JNICALL Java_net_kdt_pojavlaunch_utils_JREUtils_setFrameCounting(
+        JNIEnv *env, jclass clazz, jboolean enabled) {
+    atomic_store_explicit(&ember_frames_enabled, enabled, memory_order_relaxed);
+}
+JNIEXPORT jlong JNICALL Java_net_kdt_pojavlaunch_utils_JREUtils_getPresentedFrameCount(
+        JNIEnv *env, jclass clazz) {
+    return (jlong) atomic_load_explicit(&ember_frame_count, memory_order_relaxed);
+}

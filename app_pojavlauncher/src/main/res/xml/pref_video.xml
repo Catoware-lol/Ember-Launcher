@@ -5,6 +5,11 @@
     <net.kdt.pojavlaunch.prefs.BackButtonPreference/>
 
     <PreferenceCategory android:title="@string/preference_category_video" >
+        <SwitchPreference android:key="fps_counter" android:defaultValue="false"
+            android:title="@string/ember_fps_counter" android:summary="@string/ember_fps_summary" />
+        <SwitchPreference android:key="fps_details" android:defaultValue="false"
+            android:dependency="fps_counter" android:title="@string/ember_fps_details"
+            android:summary="@string/ember_fps_details_summary" />
         <Preference
             android:title="@string/mcl_setting_title_renderer_settings"
             android:summary="@string/mcl_setting_title_renderer_subtitle"

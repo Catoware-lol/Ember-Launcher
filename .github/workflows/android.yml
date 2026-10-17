@@ -21,6 +21,8 @@ jobs:
         run: bash scripts/test-offline-identity.sh
       - name: Test memory budgets
         run: bash scripts/test-memory-budget.sh
+      - name: Test native frame counter and FPS sampling
+        run: bash scripts/test-frame-counter.sh
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools

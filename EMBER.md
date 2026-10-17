@@ -17,6 +17,23 @@ An independent Android Minecraft: Java Edition launcher based on Amethyst and Po
 - Local profiles can install game versions with an internet connection and use the installer, modpack, and game-folder tools.
 - Optional Microsoft sign-in remains available. Offline identities do not authenticate to online-mode servers.
 
+## Performance overlay and controls editor
+
+**Settings → Video and renderer → FPS counter** enables a compact orange monospace overlay.
+**Detailed performance overlay** adds the average frame interval, game-process memory
+(PSS, including native memory), and available system RAM. Counts come from completed
+launcher graphics-bridge swaps, sampled once a second using elapsed real time.
+The frame interval is an average, not GPU execution time. Loading, paused rendering,
+and render paths that bypass the bridge display **—**. No GPU load or temperature
+figures are guessed. This is Ember’s native Android overlay; MSI Afterburner and
+RTSS themselves are Windows software and are not bundled.
+
+The controls editor has visible **Add**, **Save**, **Preview**, and **More** actions.
+Hold a control to open its property inspector; drag it to move, or use its resize
+handle. **More** contains load, set default, and export. Preview hides the editing
+tools and blocks touches to prevent accidental changes. **Show tools** or Back
+returns to editing. Existing JSON layouts and screen coordinates are preserved.
+
 ## Build and download
 
 Open this repository's Actions tab and run **Ember Android APK**. The workflow installs Java 21, Android SDK 36 and NDK 27, retrieves the upstream Java 8 runtime, and builds a debug APK without private release-signing credentials. Download **Ember-Launcher-APK** from the completed run. The artifact includes a SHA-256 checksum.

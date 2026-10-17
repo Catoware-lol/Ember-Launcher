@@ -104,6 +104,12 @@ public abstract class SideDialogView {
         mDialogContent = mScrollView.getChildAt(0);
 
         // Attach layouts
+        if (mParent.getContext() instanceof net.kdt.pojavlaunch.CustomControlsActivity) {
+            android.widget.FrameLayout.LayoutParams params =
+                    (android.widget.FrameLayout.LayoutParams) mDialogLayout.getLayoutParams();
+            params.topMargin = Math.round(88 * mParent.getResources().getDisplayMetrics().density);
+            mDialogLayout.setLayoutParams(params);
+        }
         mParent.addView(mDialogLayout);
 
         mSideDialogAnimator = ObjectAnimator.ofFloat(mDialogLayout, "x", 0).setDuration(600);

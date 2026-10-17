@@ -105,6 +105,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
     private ControlLayout mControlLayout;
     private HotbarView mHotbarView;
     private FrameLayout contentFrame;
+    private net.kdt.pojavlaunch.utils.PerformanceOverlay performanceOverlay;
 
     @Nullable
     private RectF inputAreaRect;
@@ -218,6 +219,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
     protected void initLayout(int resId) {
         setContentView(resId);
         bindValues();
+        performanceOverlay = new net.kdt.pojavlaunch.utils.PerformanceOverlay(contentFrame);
         mControlLayout.setMenuListener(this);
 
         mDrawerPullButton.setOnClickListener(v -> onClickedMenu());
@@ -346,6 +348,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
     @Override
     public void onResume() {
         super.onResume();
+        if (performanceOverlay != null) performanceOverlay.start();
         if(PREF_ENABLE_GYRO) mGyroControl.enable();
         CallbackBridge.nativeSetWindowAttrib(LwjglGlfwKeycode.GLFW_FOCUSED, 1);
         CallbackBridge.nativeSetWindowAttrib(LwjglGlfwKeycode.GLFW_HOVERED, 1);
@@ -353,6 +356,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
 
     @Override
     protected void onPause() {
+        if (performanceOverlay != null) performanceOverlay.stop();
         mGyroControl.disable();
         if (CallbackBridge.isGrabbing()){
             sendKeyPress(LwjglGlfwKeycode.GLFW_KEY_ESCAPE);
@@ -380,6 +384,7 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
 
     @Override
     protected void onDestroy() {
+        if (performanceOverlay != null) performanceOverlay.stop();
         super.onDestroy();
         CallbackBridge.removeGrabListener(touchpad);
         CallbackBridge.removeGrabListener(minecraftGLView);

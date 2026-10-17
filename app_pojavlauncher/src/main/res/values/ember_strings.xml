@@ -41,4 +41,14 @@
     <string name="ember_your_instances">Your instances</string>
     <string name="ember_tools">Tools</string>
     <string name="ember_device_short">Device test</string>
+    <string name="ember_fps_counter">FPS counter</string>
+    <string name="ember_fps_summary">Orange monitoring overlay during play. Measures game graphics-bridge frames; unsupported render paths show —.</string>
+    <string name="ember_fps_details">Detailed performance overlay</string>
+    <string name="ember_fps_details_summary">Adds average frame interval, game-process RAM (PSS), and available phone RAM. Updates once a second.</string>
+    <string name="ember_editor_title">Controls editor</string>
+    <string name="ember_editor_hint">Drag to move · Hold a control to edit · Drag its handle to resize</string>
+    <string name="ember_editor_preview">Preview</string>
+    <string name="ember_editor_more">More</string>
+    <string name="ember_editor_add">Add</string>
+    <string name="ember_editor_show">Show tools</string>
 </resources>

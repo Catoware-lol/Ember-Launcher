@@ -624,6 +624,8 @@ public class JREUtils {
     public static int getDetectedVersion() {
         return GLInfoUtils.getGlInfo().glesMajorVersion;
     }
+    public static native void setFrameCounting(boolean enabled);
+    public static native long getPresentedFrameCount();
     public static native int chdir(String path);
     public static native boolean dlopen(String libPath);
     public static native void setLdLibraryPath(String ldLibraryPath);
